@@ -18,7 +18,7 @@ for el in product_list:
     anchor = ele.find_element_by_tag_name('a')
     list_links.append(anchor.get_property('href'))
 
-    
+
 print(list_links)
 
 detail_list = []
@@ -28,7 +28,7 @@ for i in list_links:
     review = driver.find_element_by_xpath('/html/body/div[1]/div[3]/div/div[2]/div/div[1]/div/div[2]/p[1]').text
     descp = driver.find_element_by_xpath('/html/body/div[1]/div[3]/div/div[2]/div/div[1]/div/div[1]/p').text
 
-                             
+
 
     desc = {'nameoftheproduct': nameoftheproduct,
             'price':price,
@@ -36,9 +36,9 @@ for i in list_links:
             'descp':descp,
             'link':'i'}
     detail_list.append(desc)
-    
+
 pd.set_option('display.max_columns',100)
 df = pd.DataFrame(detail_list)
 print(df.head(10))
 
-df.to_csv('df.csv', index=False)
+df.to_csv('scraping_selenium.csv', index=False)
